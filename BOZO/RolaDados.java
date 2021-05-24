@@ -52,20 +52,30 @@ public class RolaDados {
     @Override
     public String toString()
     {
-        String view = new String();
+        String view = new String("");
+        String dieIndex = new String("");
+        String[] aux;
+
         for (int i = 1; i <= diceAmnt; i++)
         {
-            view += dice[i].toString();    
+            dieIndex += (i) + "\t";
+            view += dice[i].toString();
+        }
+        dieIndex += '\n';
+
+        aux = view.split("\n");
+        view = "";
+
+        for (int i = 0; i < 5; i++) //5 is the number of lines in the ASCII Art
+        {
+            for (int j = i; j < (5 * diceAmnt); j += 5)//It jumps 5 lines to the next die's correspondent
+            {
+                view += aux[j] + '\t';
+            }
+
+            view += '\n';
         }
 
-        return view;
-    }
-
-    public static void main(String[] args) {
-        RolaDados teste = new RolaDados(5);
-
-        teste.rolar();
-        System.out.println(teste.toString());
-
+        return dieIndex + view;
     }
 }
