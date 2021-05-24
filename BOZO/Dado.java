@@ -1,10 +1,6 @@
 /**
- * Esta classe foi desenhada para facilitar a entrada de dados
- * pelo teclado. Basicamente ela implementa funções para
- * ler strings, inteiros e doubles. 
- * Ela não faz verificações se o que foi digitado realmente
- * é o esperado.
- * Todos 
+ * This class is designed to simulate a rolling die
+ * Developed for OOP class
  * @author Holondo
  *
  */
@@ -19,6 +15,7 @@ public class Dado {
     {
         facesAmnt = 6;
         facingUp = 1;
+        for (Long i = 0l; i < 1000000; i++) {}
         die = new Random();
     }
     
@@ -58,7 +55,7 @@ public class Dado {
         else if(facingUp == 1) toReturn += "|     |\n";
         else toReturn += "|*    |\n";
 
-        toReturn += "+-----+";
+        toReturn += "+-----+\n";
 
         return toReturn;
     }
