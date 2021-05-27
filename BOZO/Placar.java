@@ -1,5 +1,3 @@
-import java.lang.reflect.Array;
-
 public class Placar {
 
     private int[] slots;
@@ -7,8 +5,8 @@ public class Placar {
 
     public Placar()
     {
-        slots = new int[9];
-        commited = new boolean[9];
+        slots = new int[10];
+        commited = new boolean[10];
     }
     
     public void add(int posicao, int[] dados)
@@ -82,5 +80,43 @@ public class Placar {
             }
         }
     }
-    //ToDo: implementar os outros metodos e verificar se add(esta funcionando
+    
+    public int getScore()
+    {
+        int total = 0;
+
+        for (int i = 0; i < slots.length; i++)
+        {
+            if(commited[i]) total += slots[i];    
+        }
+
+        return total;
+    }
+
+    @Override
+	public String toString()
+    {
+		String show = "";
+		String[] formattedScore = new String[10];
+
+		for(int i = 0; i< 10; i++)
+        {
+			if(commited[i]) formattedScore[i] = "" + slots[i];
+			else
+            {
+				formattedScore[i] = "(" + (i+1) + ")";
+			}
+		}
+
+		show += formattedScore[0] + "\t|\t" + formattedScore[6] + "\t|\t" + formattedScore[3] + "\n";
+		show += "-------------------------------------\n";
+		show += formattedScore[1] + "\t|\t" + formattedScore[7] + "\t|\t" + formattedScore[4] + "\n";
+		show += "-------------------------------------\n";
+		show += formattedScore[2] + "\t|\t" + formattedScore[8] + "\t|\t" + formattedScore[5] + "\n";
+		show += "-------------------------------------\n";
+		show += "\t|\t" + formattedScore[9] + "\t|\t\n";
+		show += "\t+---------------+\t\n";
+		      
+		return show;
+	}
 }
