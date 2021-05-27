@@ -1,8 +1,17 @@
+/**
+ * This class is designed to simulate a set of rolling dice. 
+ * Developed for OOP class.
+ * @author Holondo
+ */
 public class RolaDados {
 
     private Dado[] dice;
     private int diceAmnt;
 
+     /**
+	 * Inicializes the n dice of the set.
+	 * @param n Number of dice.
+	 */
     public RolaDados(int n)
     {
         dice = new Dado[n+1];
@@ -14,6 +23,11 @@ public class RolaDados {
         diceAmnt = n;
     }
 
+    /**
+	 * Rolls the specified dice.
+	 * @param boolean[] quais; (Which dice)
+     * @return (int[]) The resultant set of showing sides.
+	 */
     public int[] rolar(boolean[] quais)
     {
         int[] result = new int[diceAmnt];
@@ -28,17 +42,26 @@ public class RolaDados {
         return result;
     }
 
-    public int[] rolar(String s)
+    /**
+	 *  Rolls the specified dice.
+	 * @param String s; (Dice enumerators [1 - (dice amount)])
+     * @return (int[]) The resultant set of showing sides.
+     **/
+    public int[] rolar(String s)//vetor bool quais 0...
     {
         boolean[] quais = new boolean[diceAmnt];
 
         for (int i = 0; i < diceAmnt; i++)
         {
-            quais[i] = s.contains("" + (i+1));
+            quais[i] = s.contains( ("" + (i+1)) );
         }
         return rolar(quais);
     }
 
+    /**
+	 * Rolls every die in the set.
+     * @return ( int[] ) The resultant set of showing sides.
+	 */
     public int[] rolar()
     {
         boolean[] quais = new boolean[diceAmnt];
@@ -49,6 +72,10 @@ public class RolaDados {
         return rolar(quais);
     }
     
+    /**
+	* Returns the formatted ASCII Art of the top of the set of dice.
+    * @return (String) Formatted ASCII Art.
+    */
     @Override
     public String toString()
     {

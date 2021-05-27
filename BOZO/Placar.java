@@ -1,39 +1,46 @@
-import java.lang.reflect.Array;
-
+/**
+ * This class is designed to simulate a Scoreboard
+ * for the BOZO game. 
+ * Developed for OOP class.
+ * @author Holondo
+ */
 public class Placar {
 
     private int[] slots;
     private boolean[] commited;
 
+    /**
+	 *  Inicializes the Scoreboard.
+	 */
     public Placar()
     {
-        slots = new int[9];
-        commited = new boolean[9];
+        slots = new int[10];
+        commited = new boolean[10];
     }
     
+    /**
+	 *  Adds a number of points made by a
+     * set of dice in a free slot of the Scoreboard. 
+	 * @param int posicao; (Slot number)
+     * @param int[] dados; (Array of rolled dice)
+	 */
     public void add(int posicao, int[] dados)
     throws java.lang.IllegalArgumentException
     {
-        if(posicao > 10 || posicao < 1 || commited[posicao])
-            throw new IllegalArgumentException( (commited[posicao] ? "Occupied position" : "Invalid position"));
+        if(posicao > 10 || posicao < 1 || commited[posicao - 1])
+            throw new IllegalArgumentException( (commited[posicao - 1]) ? "Occupied position\n" : "Invalid position\n");
 
         int[] counter = new int[6];
         int sequenceVerifier = 0;
 
-        for (int i : dados)
+        for (int i : dados) // Add +1 to each found die's counter
         {
-            counter[i - 1]++;    
+            counter[i - 1]++;
         }
 
         if(posicao <= 6)
         {
-            /*for (int i = 0; i < dados.length; i++)
-            {
-                if(dados[i] == posicao)
-                    slots[posicao - 1] += dados[i];
-            }*/
-
-            slots[posicao - 1] = counter[posicao - 1] * posicao; //verificar
+            slots[posicao - 1] = counter[posicao - 1] * posicao;
             commited[posicao - 1] = true;
         }
 
@@ -82,5 +89,51 @@ public class Placar {
             }
         }
     }
-    //ToDo: implementar os outros metodos e verificar se add(esta funcionando
+    
+    /**
+	 * Returns the score.
+     * @return (int) total (score)
+	 */
+    public int getScore()
+    {
+        int total = 0;
+
+        for (int i = 0; i < slots.length; i++)
+        {
+            if(commited[i]) total += slots[i];    
+        }
+
+        return total;
+    }
+
+    /**
+	* Returns the formatted ASCII Art of the Scoreboard.
+    * @return (String) Formatted ASCII Art.
+     */
+    @Override
+	public String toString()
+    {
+		String show = "";
+		String[] formattedScore = new String[10];
+
+		for(int i = 0; i< 10; i++)
+        {
+			if(commited[i]) formattedScore[i] = "=> " + slots[i];
+			else
+            {
+				formattedScore[i] = "(" + (i+1) + ")";
+			}
+		}
+
+		show += formattedScore[0] + "\t|\t" + formattedScore[6] + "\t|\t" + formattedScore[3] + "\n";
+		show += "-------------------------------------\n";
+		show += formattedScore[1] + "\t|\t" + formattedScore[7] + "\t|\t" + formattedScore[4] + "\n";
+		show += "-------------------------------------\n";
+		show += formattedScore[2] + "\t|\t" + formattedScore[8] + "\t|\t" + formattedScore[5] + "\n";
+		show += "-------------------------------------\n";
+		show += "\t|\t" + formattedScore[9] + "\t|\t\n";
+		show += "\t+---------------+\t\n";
+		      
+		return show;
+	}
 }
