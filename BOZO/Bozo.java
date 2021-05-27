@@ -1,5 +1,13 @@
+/**
+ * Simple dice game called "Bozó"
+ * @author Holondo
+ */
 public class Bozo{
     public static int DICEAMNT = 5;
+
+    /**
+	* Executa o Bozo.
+    */
     public static void main(String[] args)
     {
         RolaDados diceBoard = new RolaDados(DICEAMNT);
@@ -32,7 +40,7 @@ public class Bozo{
 
             for (int j = 0; j < 2; j++)
             {
-                System.out.println("Digite o numero dos dados que quiser TROCAR. Separados por espaço.\n");
+                System.out.println("Digite o numero dos dados que quiser TROCAR. Separados por espaço.");
 
                 try
                 {
@@ -49,7 +57,7 @@ public class Bozo{
 
             while (slotSelector == 0)
             {
-                System.out.println("Escolha a posição que quer ocupar com essa jogada ==>");
+                System.out.printf("Escolha a posição que quer ocupar com essa jogada ==>");
                 try
                 {
                     slotSelector = EntradaTeclado.leInt();
@@ -57,11 +65,11 @@ public class Bozo{
                 }
                 catch (Exception e)
                 {
-                    System.out.println(e);
+                    if(slotSelector != 0)System.out.println(e.getMessage());
                     slotSelector = 0; // If slot is already commited, resets the selector
                 } 
             }
         }
-        System.out.println("Seu score final foi: " + scoreBoard.getScore());
+        System.out.println("\nSeu score final foi: " + scoreBoard.getScore());
     }   
 }
