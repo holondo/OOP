@@ -28,13 +28,13 @@ public class RolaDados {
         return result;
     }
 
-    public int[] rolar(String s)
+    public int[] rolar(String s)//vetor bool quais 0...
     {
         boolean[] quais = new boolean[diceAmnt];
 
         for (int i = 0; i < diceAmnt; i++)
         {
-            quais[i] = s.contains("" + (i+1));
+            quais[i] = s.contains( ("" + (i+1)) );
         }
         return rolar(quais);
     }

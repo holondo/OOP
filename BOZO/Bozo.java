@@ -7,7 +7,7 @@ public class Bozo{
         String opt;
         int slotSelector;
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 10; i++)
         {
             slotSelector = 0;
             opt = "notpressed";
@@ -36,7 +36,8 @@ public class Bozo{
 
                 try
                 {
-                    diceBoard.rolar(EntradaTeclado.leString());
+                    opt = EntradaTeclado.leString();
+                    diceBoard.rolar(opt);
                     System.out.println(diceBoard.toString());
                 }
                 catch(Exception E)
@@ -51,16 +52,16 @@ public class Bozo{
                 System.out.println("Escolha a posição que quer ocupar com essa jogada ==>");
                 try
                 {
-                    slotSelector = EntradaTeclado.leInt();    
-                } catch (Exception e)
+                    slotSelector = EntradaTeclado.leInt();
+                    scoreBoard.add(slotSelector, diceBoard.rolar(""));
+                }
+                catch (Exception e)
                 {
-                    System.out.println("Digite o numero da posição de 1 a 10.");
+                    System.out.println(e);
+                    slotSelector = 0; // If slot is already commited, resets the selector
                 } 
             }
-
-            scoreBoard.add(slotSelector, diceBoard.rolar(""));
         }
-        
         System.out.println("Seu score final foi: " + scoreBoard.getScore());
-    }    
+    }   
 }

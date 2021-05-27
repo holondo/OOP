@@ -12,15 +12,15 @@ public class Placar {
     public void add(int posicao, int[] dados)
     throws java.lang.IllegalArgumentException
     {
-        if(posicao > 10 || posicao < 1 || commited[posicao])
-            throw new IllegalArgumentException( (commited[posicao] ? "Occupied position" : "Invalid position"));
+        if(posicao > 10 || posicao < 1 || commited[posicao - 1])
+            throw new IllegalArgumentException( (commited[posicao - 1]) ? "Occupied position" : "Invalid position");
 
         int[] counter = new int[6];
         int sequenceVerifier = 0;
 
-        for (int i : dados)
+        for (int i : dados) // Add +1 to each die's counter
         {
-            counter[i - 1]++;    
+            counter[i - 1]++;
         }
 
         if(posicao <= 6)

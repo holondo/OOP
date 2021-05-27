@@ -48,7 +48,8 @@ public class Dado {
         else if(facingUp == 1) toReturn += "|     |\n";
         else toReturn += "|    *|\n";
 
-        if((facingUp % 2) == 0) toReturn += "|     |\n";
+        if(facingUp == 6)   toReturn += "|*   *|\n";
+        else if((facingUp % 2) == 0) toReturn += "|     |\n";
         else toReturn += "|  *  |\n";
 
         if(facingUp > 3) toReturn += "|*   *|\n";
