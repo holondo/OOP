@@ -121,16 +121,18 @@ public class Placar {
 			if(commited[i]) formattedScore[i] = "=> " + slots[i];
 			else
             {
-				formattedScore[i] = "(" + (i+1) + ")";
+				formattedScore[i] = "( " + (i+1) + " )";
 			}
 		}
 
+        String sep1 = "-------------------------------------\n";
+
 		show += formattedScore[0] + "\t|\t" + formattedScore[6] + "\t|\t" + formattedScore[3] + "\n";
-		show += "-------------------------------------\n";
+		show += sep1;
 		show += formattedScore[1] + "\t|\t" + formattedScore[7] + "\t|\t" + formattedScore[4] + "\n";
-		show += "-------------------------------------\n";
+		show += sep1;
 		show += formattedScore[2] + "\t|\t" + formattedScore[8] + "\t|\t" + formattedScore[5] + "\n";
-		show += "-------------------------------------\n";
+		show += sep1;
 		show += "\t|\t" + formattedScore[9] + "\t|\t\n";
 		show += "\t+---------------+\t\n";
 		      
