@@ -1,9 +1,17 @@
 public class DVD extends Product{
     String author, genre, releaseDate;
 
-    public DVD(String name, double price, String barCode, String author, String genre, String releaseDate)
+    public DVD()
     {
-        super(name, price, barCode);
+        super("", 0, "",0);
+        setAuthor("");
+        setGenre("");
+        setReleaseDate("");
+    }
+
+    public DVD(String name, double price, String barCode, int inStock, String author, String genre, String releaseDate)
+    {
+        super(name, price, barCode, inStock);
         setAuthor(author);
         setGenre(genre);
         setReleaseDate(releaseDate);

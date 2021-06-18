@@ -4,12 +4,12 @@ public class Product {
     Double price;
     int inStock;
 
-    public Product(String name, double price, String barCode)
+    public Product(String name, double price, String barCode, int inStock)
     {
-        setBarcode(barCode);
+        setBarCode(barCode);
         setName(name);
         setPrice(price);
-        setInStock(0);
+        setInStock(inStock);
     }
 
     public void setBarCode(String barCode) {

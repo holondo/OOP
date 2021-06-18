@@ -1,9 +1,16 @@
 public class Book extends Product{
     String author, releaseDate, genre;
 
-    public Book(String name, double price, String barCode, String author, String genre, String releaseDate)
+    public Book()
     {
-        super(name, price, barCode);
+        super("", 0, "",0);
+        setAuthor("");
+        setGenre("");
+        setReleaseDate("");
+    }
+    public Book(String name, double price, String barCode, int inStock, String author, String genre, String releaseDate)
+    {
+        super(name, price, barCode, inStock);
         setAuthor(author);
         setGenre(genre);
         setReleaseDate(releaseDate);

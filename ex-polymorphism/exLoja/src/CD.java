@@ -1,9 +1,16 @@
 public class CD extends Product{
     String author, genre, releaseDate;
 
-    public CD(String name, double price, String barCode, String author, String genre, String releaseDate)
+    public CD()
     {
-        super(name, price, barCode);
+        super("", 0, "",0);
+        setAuthor("");
+        setGenre("");
+        setReleaseDate("");
+    }
+    public CD(String name, double price, String barCode, int inStock, String author, String genre, String releaseDate)
+    {
+        super(name, price, barCode, inStock);
         setAuthor(author);
         setGenre(genre);
         setReleaseDate(releaseDate);
